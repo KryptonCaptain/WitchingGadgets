@@ -60,7 +60,7 @@ public class WGConfig
 		config.load();
 
 		// Random Config Options
-		smelteryResultForClusters = config.get("Other Options", "Smeltery Result for Clusters", 144*3, "How many milliBuckets of molten Metal a cluster should give. 144mB equal 1 ingot. Set to 0 to disable smeltery recipes.").getInt();
+		smelteryResultForClusters = config.get("Ore/Crucible", "Smeltery Result for Clusters", 144*3, "How many milliBuckets of molten Metal a cluster should give. 144mB equal 1 ingot. Set to 0 to disable smeltery recipes.").getInt();
 		allowClusters = config.get("Ore/Crucible", "Enable clusters", true, "Set this to false to disable clusters, useful when you are using AOBD.").getBoolean(true);
 		allowTransmutations = config.get("Ore/Crucible", "Enable transmutations", false, "Set this to false to disable nugget transmutations, this should fix the infinite loop glitch").getBoolean(false);
 		String[] clusters = {
@@ -87,13 +87,13 @@ public class WGConfig
 		cloakAnimationMode = config.get("Other Options", "Cloak Animation Mode", 2, "0 = no animation, 1 = rotate cloak when legs move, 2 = stretch cloak when legs move").getInt();
 		coremod_allowFocusPouchActive = config.get("Other Options", "Allow FocusPouch active ability", true, "Dis-/enable the IActiveAbiltiy on the FocusPouch. With this enabled, TGs active ability menu will allow you to open the pouch.").getBoolean(true);
 				
-		coremod_allowBootsRepair = config.get("Other Options", "Dis-/enable repairing the Boots of the Traveller with leather", true, "Dis-/enable repairing the Boots of the Traveller with leather").getBoolean(true);
+		coremod_allowBootsRepair = config.get("Other Options", "[Coremod] Enable repairing the Boots of the Traveller with leather", true, "Dis-/enable repairing the Boots of the Traveller with leather").getBoolean(true);
 		
 		//coin
-		coremod_allowEnchantModifications = config.get("Other Options", "Dis-/enable the modification of looting and fortune modifications with the Ring of the Covetous Coin", true, "Dis-/enable the modification of looting and fortune modifications with the Ring of the Covetous Coin").getBoolean(true);
+		coremod_allowEnchantModifications = config.get("Other Options", "[Coremod] Enable the modification of looting and fortune modifications with the Ring of the Covetous Coin", true, "Dis-/enable the modification of looting and fortune modifications with the Ring of the Covetous Coin").getBoolean(true);
 		
 		//primal
-		coremod_allowPotionApplicationMod = config.get("Other Options", "Allow modifications to newly applied PotionEffects", true, "Dis-/enable the modification of newly applied PotionEffects. (Primordial Armor affects newly applied Warp Effects)").getBoolean(true);
+		coremod_allowPotionApplicationMod = config.get("Other Options", "[Coremod] Allow modifications to newly applied PotionEffects", true, "Dis-/enable the modification of newly applied PotionEffects. (Primordial Armor affects newly applied Warp Effects)").getBoolean(true);
 		
 		//new
 		modulePrimal = config.get("Modules", "Enable Primordial gear and weapons", true, 
