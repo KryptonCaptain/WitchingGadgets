@@ -46,10 +46,8 @@ public class WGCoreTransformer implements IClassTransformer
 	public byte[] transform(String className, String newClassName, byte[] origCode)
 	{
 		isDeobfEnvironment = (Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
-		if (WGConfig.coremod_allowBootsRepair) {
-			if (className.equals("thaumcraft.common.items.armor.ItemBootsTraveller"))
-				return patchBoots(className, origCode, isDeobfEnvironment);
-		}
+		if (className.equals("thaumcraft.common.items.armor.ItemBootsTraveller"))
+			return patchBoots(className, origCode, isDeobfEnvironment);
 		if (className.equals("thaumcraft.common.items.wands.ItemFocusPouchBauble"))
 		{
 			byte[] newCode = patchFocusPouch_Interface(className, origCode);
@@ -60,19 +58,15 @@ public class WGCoreTransformer implements IClassTransformer
 		if (className.equals("thaumcraft.common.lib.world.WorldGenHilltopStones"))
 			return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "HilltopStones");
 
-		if (WGConfig.coremod_allowEnchantModifications) {
-			if(className.equals(isDeobfEnvironment?"net.minecraft.enchantment.EnchantmentHelper":"afv"))
-			{
-				byte[] newCode = patchGetFortuneModifier(origCode, isDeobfEnvironment);
-				return newCode;
-			}
+		if(className.equals(isDeobfEnvironment?"net.minecraft.enchantment.EnchantmentHelper":"afv"))
+		{
+			byte[] newCode = patchGetFortuneModifier(origCode, isDeobfEnvironment);
+			return newCode;
 		}
-		if (WGConfig.coremod_allowPotionApplicationMod) {
-			if(className.equals(isDeobfEnvironment?"net.minecraft.entity.EntityLivingBase":"sv"))
-			{
-				byte[] newCode = patchOnNewPotionEffect(origCode, isDeobfEnvironment);
-				return newCode;
-			}
+		if(className.equals(isDeobfEnvironment?"net.minecraft.entity.EntityLivingBase":"sv"))
+		{
+			byte[] newCode = patchOnNewPotionEffect(origCode, isDeobfEnvironment);
+			return newCode;
 		}
 
 		return origCode;
@@ -105,7 +99,7 @@ public class WGCoreTransformer implements IClassTransformer
 	}
 	public static boolean boots_getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
-		return stack2.isItemEqual(new ItemStack(Items.leather));
+		return WGConfig.coremod_allowBootsRepair && stack2.isItemEqual(new ItemStack(Items.leather));
 	}
 
 
@@ -236,7 +230,7 @@ public class WGCoreTransformer implements IClassTransformer
 	public static int enchantment_getFortuneLevel(EntityLivingBase living)
 	{
 		int base = EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, living.getHeldItem());
-		if(living instanceof EntityPlayer)
+		if(WGConfig.coremod_allowEnchantModifications && living instanceof EntityPlayer)
 			for(int i=0; i<BaublesApi.getBaubles((EntityPlayer)living).getSizeInventory(); i++)
 			{
 				ItemStack bStack = BaublesApi.getBaubles((EntityPlayer)living).getStackInSlot(i);
@@ -251,7 +245,7 @@ public class WGCoreTransformer implements IClassTransformer
 	public static int enchantment_getLootingLevel(EntityLivingBase living)
 	{
 		int base = EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, living.getHeldItem());
-		if(living instanceof EntityPlayer)
+		if(WGConfig.coremod_allowEnchantModifications && living instanceof EntityPlayer)
 			for(int i=0; i<BaublesApi.getBaubles((EntityPlayer)living).getSizeInventory(); i++)
 			{
 				ItemStack bStack = BaublesApi.getBaubles((EntityPlayer)living).getStackInSlot(i);
@@ -311,7 +305,7 @@ public class WGCoreTransformer implements IClassTransformer
 	static Field f_potionDuration;
 	public static void living_onPotionApplied(EntityLivingBase living, PotionEffect effect)
 	{
-		if(effect!=null && !living.worldObj.isRemote)
+		if(WGConfig.coremod_allowPotionApplicationMod && effect!=null && !living.worldObj.isRemote)
 		{
 			int id = effect.getPotionID();
 			if(id==Config.potionVisExhaustID
