@@ -75,8 +75,8 @@ public class BlockWGWoodenDevice extends BlockContainer implements IWandable
 	{
 		if(metadata==4)
 			return side==1?saunaTop:icons[4];
-		if(metadata==1)
-			return icons[1];
+		//if(metadata==1)
+			//return icons[1];
 		return icons[0];
 	}
 
@@ -111,7 +111,7 @@ public class BlockWGWoodenDevice extends BlockContainer implements IWandable
 	public void getSubBlocks(Item item, CreativeTabs par2CreativeTabs, List list)
 	{
 		for(int i=0; i<subNames.length; i++)
-			if(i!=1)
+			//if(i!=1)
 				list.add(new ItemStack(item, 1, i));
 	}
 

@@ -85,21 +85,21 @@ public class TileRenderCobbleGen extends TileEntitySpecialRenderer
 			renderPixelBlock(tes, 0.375, 0.375,-0.125, 0.625, 0.625, 0, 0.859375,0.65625,0.8984375,0.71875);
 			renderPixelBlock(tes, 0.375, 0.375,-0.125, 0.625, 0.625,-0.125, 0.828125,0.875,0.8671875,0.953125);
 		}
+		
+		double slowTick = tick/4; 
+		double loopTick = slowTick*1.65;
+		double inc = 1.0/512.0;
+		GL11.glEnable(3042);
+		GL11.glBlendFunc(770, 771);
+		ClientUtilities.bindTexture("textures/blocks/lava_flow.png");
+		renderPixelBlock(tes, 0.1875, 0.3125, 0.375, 0.3125, 0.8125, 0.625, .375,(loopTick*inc),.625,((loopTick+8)*inc));
 
+		ClientUtilities.bindTexture("textures/blocks/water_flow.png");
+		renderPixelBlock(tes, 0.6875, 0.3125, 0.375, 0.8125, 0.8125, 0.625, .375,(loopTick*inc),.625,((loopTick+8)*inc));
+		GL11.glDisable(3042);
+		
 		if(tile.getWorldObj()==null || tile.getWorldObj().getBlockPowerInput(tile.xCoord, tile.yCoord, tile.zCoord)<=0 && !tile.getWorldObj().isBlockIndirectlyGettingPowered(tile.xCoord, tile.yCoord, tile.zCoord))
 		{
-			double slowTick = tick/4;
-			double loopTick = slowTick*1.65;
-			double inc = 1.0/512.0;
-			GL11.glEnable(3042);
-			GL11.glBlendFunc(770, 771);
-			ClientUtilities.bindTexture("textures/blocks/lava_flow.png");
-			renderPixelBlock(tes, 0.1875, 0.3125, 0.375, 0.3125, 0.8125, 0.625, .375,(loopTick*inc),.625,((loopTick+8)*inc));
-
-			ClientUtilities.bindTexture("textures/blocks/water_flow.png");
-			renderPixelBlock(tes, 0.6875, 0.3125, 0.375, 0.8125, 0.8125, 0.625, .375,(loopTick*inc),.625,((loopTick+8)*inc));
-			GL11.glDisable(3042);
-
 			ClientUtilities.bindTexture("textures/blocks/cobblestone.png");
 			if(tick>32)
 				renderPixelBlock(tes, 0.3125, 0.3125, 0.3125, 0.6875, 0.6875, 0.6875, 0,0,1,1);

@@ -19,16 +19,15 @@ public class WGConfig
 	public static int smelteryResultForClusters;
 	
 	public static boolean coremod_allowBootsRepair;
-
 	public static boolean coremod_allowEnchantModifications;
+	public static boolean coremod_allowPotionApplicationMod;
+	public static boolean coremod_allowFocusPouchActive;
 
 	public static Block[] coremod_worldgenValidBase_HilltopStones;
 	public static Block[] coremod_worldgenValidBase_EldritchRing;
 
 	public static int cloakAnimationMode;
 	public static float radialSpeed;
-	public static boolean coremod_allowPotionApplicationMod;
-	public static boolean coremod_allowFocusPouchActive;
 	
 	//new
 	public static boolean modulePrimal;
@@ -51,6 +50,8 @@ public class WGConfig
 	public static boolean soulboundGalacticraft;
 	
 	public static boolean moduleGemcutting;
+	public static boolean allowDropsFromMachinery;
+	
 	
 
 	static Configuration config;
@@ -87,13 +88,13 @@ public class WGConfig
 		cloakAnimationMode = config.get("Other Options", "Cloak Animation Mode", 2, "0 = no animation, 1 = rotate cloak when legs move, 2 = stretch cloak when legs move").getInt();
 		coremod_allowFocusPouchActive = config.get("Other Options", "Allow FocusPouch active ability", true, "Dis-/enable the IActiveAbiltiy on the FocusPouch. With this enabled, TGs active ability menu will allow you to open the pouch.").getBoolean(true);
 				
-		coremod_allowBootsRepair = config.get("Other Options", "[Coremod] Enable repairing the Boots of the Traveller with leather", true, "Dis-/enable repairing the Boots of the Traveller with leather").getBoolean(true);
+		coremod_allowBootsRepair = config.get("Other Options", "Enable repairing the Boots of the Traveller with leather", true, "Dis-/enable repairing the Boots of the Traveller with leather").getBoolean(true);
 		
 		//coin
-		coremod_allowEnchantModifications = config.get("Other Options", "[Coremod] Enable the modification of looting and fortune modifications with the Ring of the Covetous Coin", true, "Dis-/enable the modification of looting and fortune modifications with the Ring of the Covetous Coin").getBoolean(true);
+		coremod_allowEnchantModifications = config.get("Other Options", "Enable the modification of looting and fortune modifications with the Ring of the Covetous Coin", true, "Dis-/enable the modification of looting and fortune modifications with the Ring of the Covetous Coin").getBoolean(true);
 		
 		//primal
-		coremod_allowPotionApplicationMod = config.get("Other Options", "[Coremod] Allow modifications to newly applied PotionEffects", true, "Dis-/enable the modification of newly applied PotionEffects. (Primordial Armor affects newly applied Warp Effects)").getBoolean(true);
+		coremod_allowPotionApplicationMod = config.get("Other Options", "Allow modifications to newly applied PotionEffects", true, "Dis-/enable the modification of newly applied PotionEffects. (Primordial Armor affects newly applied Warp Effects)").getBoolean(true);
 		
 		//new
 		modulePrimal = config.get("Modules", "Enable Primordial gear and weapons", true, 
@@ -133,6 +134,10 @@ public class WGConfig
 		moduleGemcutting = config.get("Modules", "Enable Gemcutting", true, 
 				"Dis-/enable the gem table, and other crystal things")
 				.getBoolean(true);
+		
+		allowDropsFromMachinery = config.get("Drop Items from Generators", "Other Options", true, 
+				"Whether the cobble and snow gen can drop items or just output into inventories. Should be disabled on MP servers with chunkloading")
+				.getBoolean(true); 
 		
 		
 		//enchants

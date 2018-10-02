@@ -23,17 +23,20 @@ public class ItemClusters extends Item
 		//TCon
 		"Aluminum", "Cobalt", "Ardite",
 		//ThermalFoundation
-		"Nickel",
+		"Nickel","Platinum",
 		//Factorization
 		"FZDarkIron", 
 		//Metallurgy 
 		"Manganese",
-		"Zinc","Platinum",
+		"Zinc",
 		"Ignatius","ShadowIron","Lemurite","Midasium","Vyroxeres","Ceruclase","Alduorite","Kalendrite","Vulcanite","Sanguinite",
 		"Prometheum","DeepIron","Infuscolium","Oureclase","AstralSilver","Carmot","Mithril","Rubracium","Orichalcum","Adamantine","Atlarus",
-		"Eximite","Meutoite"
-
-
+		"Eximite","Meutoite",
+		// Betweenlands 
+		"Octine","Syrmorite", 
+		// Other 
+		"HeeEndium"
+		
 	};
 	public static HashMap<String, Integer[]> materialMap = new HashMap();
 

@@ -8,28 +8,19 @@ public class MetalFluidData
 	static HashMap<String, Integer> oreFluidTemp = new HashMap();
 
 	static{
+		//tcon
 		addOreFluid("Aluminum", "aluminum.molten", 350);
 		addOreFluid("Cobalt", "cobalt.molten", 650);
 		addOreFluid("Ardite", "ardite.molten", 650);
-		addOreFluid("Nickel", "nickel.molten", 400);
+		//factorization
 		addOreFluid("FzDarkIron", "fzdarkiron.molten", 600);
-
-		addOreFluid("Manganese", "manganese.molten", 700);
-
-		addOreFluid("Zinc", "zinc.molten", 550);
+		//TFoundation
+		addOreFluid("Nickel", "nickel.molten", 400);
 		addOreFluid("Platinum", "platinum.molten", 550);
-
-		addOreFluid("Ignatius", "ignatius.molten", 550);
-		addOreFluid("ShadowIron", "shadow.iron.molten", 550);
-		addOreFluid("Lemurite", "lemurite.molten", 550);
-		addOreFluid("Midasium", "midasium.molten", 550);
-		addOreFluid("Vyroxeres", "vyroxeres.molten", 550);
-		addOreFluid("Ceruclase", "ceruclase.molten", 550);
-		addOreFluid("Alduorite", "alduorite.molten", 550);
-		addOreFluid("Kalendrite", "kalendrite.molten", 550);
-		addOreFluid("Vulcanite", "vulcanite.molten", 550);
-		addOreFluid("Sanguinite", "sanguinite.molten", 550);
-
+		//misc
+		addOreFluid("Manganese", "manganese.molten", 700);
+		addOreFluid("Zinc", "zinc.molten", 550);
+		//metallurgy-overworld
 		addOreFluid("Prometheum", "prometheum.molten", 550);
 		addOreFluid("DeepIron", "deep.iron.molten", 550);
 		addOreFluid("Infuscolium", "infuscolium.molten", 550);
@@ -41,9 +32,24 @@ public class MetalFluidData
 		addOreFluid("Orichalcum", "orichalcum.molten", 550);
 		addOreFluid("Adamantine", "adamantine.molten", 550);
 		addOreFluid("Atlarus", "atlarus.molten", 550);
-
+		//metallurgy-nether
+		addOreFluid("Ignatius", "ignatius.molten", 550);
+		addOreFluid("ShadowIron", "shadow.iron.molten", 550);
+		addOreFluid("Lemurite", "lemurite.molten", 550);
+		addOreFluid("Midasium", "midasium.molten", 550);
+		addOreFluid("Vyroxeres", "vyroxeres.molten", 550);
+		addOreFluid("Ceruclase", "ceruclase.molten", 550);
+		addOreFluid("Alduorite", "alduorite.molten", 550);
+		addOreFluid("Kalendrite", "kalendrite.molten", 550);
+		addOreFluid("Vulcanite", "vulcanite.molten", 550);
+		addOreFluid("Sanguinite", "sanguinite.molten", 550);
+		//metallurgy-ender
 		addOreFluid("Eximite", "eximite.molten", 600);
 		addOreFluid("Meutoite", "meutoite.molten", 600);
+		//betweenlands
+		addOreFluid("Syrmorite", "syrmorite.molten", 600); 
+		addOreFluid("Octine", "octine.molten", 600);
+		
 	}
 
 	public static int getOreFluidTemp(String ore)

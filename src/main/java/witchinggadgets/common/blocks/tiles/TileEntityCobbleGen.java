@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.common.lib.utils.InventoryUtils;
+import witchinggadgets.common.WGConfig;
 
 public class TileEntityCobbleGen extends TileEntityWGBase
 {
@@ -43,7 +44,7 @@ public class TileEntityCobbleGen extends TileEntityWGBase
 		if ((inventory != null) && ((inventory instanceof IInventory)))
 			cobble = InventoryUtils.placeItemStackIntoInventory(cobble, (IInventory)inventory, this.facing.getOpposite().ordinal(), true);
 
-		if (cobble != null)
+		if (cobble != null && WGConfig.allowDropsFromMachinery)
 			if(facing.equals(ForgeDirection.UP)||facing.equals(ForgeDirection.DOWN))
 			{
 				EntityItem ei = new EntityItem(this.worldObj, this.xCoord + 0.5D, this.yCoord + 0.5 + this.facing.offsetY * 0.66D, this.zCoord + 0.5D, cobble.copy());

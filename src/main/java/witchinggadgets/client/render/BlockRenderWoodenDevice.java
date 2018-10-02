@@ -15,6 +15,7 @@ import witchinggadgets.client.ClientUtilities;
 import witchinggadgets.common.blocks.tiles.TileEntityCobbleGen;
 import witchinggadgets.common.blocks.tiles.TileEntityCuttingTable;
 import witchinggadgets.common.blocks.tiles.TileEntityLabelLibrary;
+import witchinggadgets.common.blocks.tiles.TileEntitySnowGen;
 import witchinggadgets.common.blocks.tiles.TileEntitySpinningWheel;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -37,6 +38,9 @@ public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 			}
 			if(metadata == 1)
 			{
+				GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F); 
+				GL11.glTranslatef(-0.5F, -0.5F, -0.5F); 
+				TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntitySnowGen(), 0.0D, 0.0D, 0.0D, 0.0F);
 			}
 			if(metadata == 2)
 			{
@@ -76,8 +80,8 @@ public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
 	{
-		if(world.getBlockMetadata(x, y, z)==1)
-		{
+		if(world.getBlockMetadata(x, y, z)==1) {
+			/*
 			renderer.setOverrideBlockTexture(ConfigBlocks.blockWoodenDevice.getIcon(0,0));
 			renderer.setRenderBounds(0, 0, 0, 1, .1875, 1);
 			renderer.renderStandardBlock(block, x, y, z);
@@ -93,11 +97,11 @@ public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 			renderer.renderStandardBlock(block, x, y, z);
 			renderer.setRenderBounds(.8125, .25, .1875, 1, .3125, .8125);
 			renderer.renderStandardBlock(block, x, y, z);
-			
+			*/
 			renderer.setOverrideBlockTexture(Blocks.water.getIcon(0, 0));
-			renderer.setRenderBounds(.1875, .25, .1875, .8125, .3125, .8125);
+			renderer.setRenderBounds(.1875, .25, .1875, .8125, .32, .8125);
 			renderer.renderStandardBlock(block, x, y, z);
-			
+			/*
 			renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(2,9));
 			renderer.setRenderBounds(0, .3125, 0, .1875, 1, .1875);
 			renderer.renderStandardBlock(block, x, y, z);
@@ -120,7 +124,7 @@ public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 			
 			renderer.setRenderBounds(0, .9375, 0, 1, .9375, 1);
 			renderer.renderStandardBlock(block, x, y, z);
-			
+			*/
 			renderer.clearOverrideBlockTexture();
 		}
 		if(world.getBlockMetadata(x, y, z)==4)

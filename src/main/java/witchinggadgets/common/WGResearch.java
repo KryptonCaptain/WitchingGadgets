@@ -130,6 +130,9 @@ public class WGResearch
 		craftingAspects = new AspectList().add(Aspect.ORDER,10).add(Aspect.ENTROPY,10);
 		registerArcaneRecipe("AGEINGSTONE","",new ItemStack(WGContent.BlockStoneDevice,1,1), craftingAspects, " s ", "SCS", " s ", 'S',new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 's', new ItemStack(ConfigItems.itemShard, 1, 32767), 'C', new ItemStack(Items.clock));
 
+		craftingAspects = new AspectList().add(Aspect.ORDER,8).add(Aspect.WATER,4).add(Aspect.EARTH, 4);
+		registerArcaneRecipe("ICEEXTRUDER","",new ItemStack(WGContent.BlockWoodenDevice,1,1), craftingAspects, " W ", "ISI", "wSw", 'S',new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'w', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'W', new ItemStack(ConfigBlocks.blockCrystal,1,2), 'I', new ItemStack(Blocks.packed_ice) );
+
 		craftingAspects = new AspectList().add(Aspect.ENTROPY,4).add(Aspect.EARTH,8);
 		registerArcaneRecipe("STONEEXTRUDER","",new ItemStack(WGContent.BlockWoodenDevice,1,2), craftingAspects, " P ", "WSL", "wSw", 'S',new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 'w', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6), 'W', new ItemStack(Items.water_bucket), 'L', new ItemStack(Items.lava_bucket), 'P', new ItemStack(ConfigItems.itemPickThaumium));
 
@@ -570,9 +573,14 @@ public class WGResearch
 		//getFakeResearchItem("ARCANESTONE", "ARTIFICE", -3,-4,  new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6)).registerResearchItem();
 		new FakeResearchItem("WG.ARCANESTONE", "WITCHGADG", "ARCANESTONE", "ARTIFICE", -3, -4, ResearchCategories.getResearch("ARCANESTONE").icon_item).registerResearchItem();
 		//STONEEXTRUDER
-		researchAspects = new AspectList().add(Aspect.EARTH, 1).add(Aspect.MECHANISM, 1).add(Aspect.TOOL, 1);
+		researchAspects = new AspectList().add(Aspect.EARTH, 4).add(Aspect.MECHANISM, 2).add(Aspect.TOOL, 2);
 		pages = new ResearchPage[]{ new ResearchPage("witchinggadgets_research_page.STONEEXTRUDER.1"), new ResearchPage((ShapedArcaneRecipe) recipeList.get("STONEEXTRUDER")) };
 		getResearchItem("STONEEXTRUDER", "WITCHGADG", researchAspects, -3, -6, 1, new ItemStack(WGContent.BlockWoodenDevice,1,2)).setParents("WG.ARCANESTONE","THAUMIUM").setPages(pages).registerResearchItem();
+		//ICEEXTRUDER
+		researchAspects = new AspectList().add(Aspect.COLD, 4).add(Aspect.MECHANISM, 2).add(Aspect.TOOL, 2);
+		pages = new ResearchPage[]{ new ResearchPage("witchinggadgets_research_page.ICEEXTRUDER.1"), new ResearchPage((ShapedArcaneRecipe) recipeList.get("ICEEXTRUDER")) };
+		getResearchItem("ICEEXTRUDER", "WITCHGADG", researchAspects, -3, -7, 1, new ItemStack(WGContent.BlockWoodenDevice,1,1)).setParents("STONEEXTRUDER").setPages(pages).setSecondary().registerResearchItem();
+		
 		//AGEINGSTONE
 		researchAspects = new AspectList().add(Aspect.LIFE,3).add(Aspect.MECHANISM,3);
 		if(Aspect.getAspect("tempus")!=null)researchAspects.add(Aspect.getAspect("tempus"), 2);
